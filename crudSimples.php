@@ -1,8 +1,18 @@
 
 <?php
 
-require_once('../repo.php');
+
 require_once('conexao.php');
+
+function get_post_action($name)
+{
+    $params = func_get_args();
+    foreach ($params as $name) {
+        if (isset($_POST[$name])) {
+            return $name;
+        }
+    }
+}
 
 switch (get_post_action('inclusao', 'alteracao',  'Deletar')) {
 
@@ -214,9 +224,9 @@ switch (get_post_action('inclusao', 'alteracao',  'Deletar')) {
         break;
 
     default:
-        //no action sent
+
         exit();
-} //fim swicht
+}
 ?>
 
     
